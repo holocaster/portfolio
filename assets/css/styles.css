@@ -1,0 +1,395 @@
+/* ============================================================
+   Portfolio - Paulo Roberto Sousa Pereira
+   Estetica: minimalismo editorial. Papel quente, tinta escura,
+   um unico tom de destaque (terracota). Fraunces (titulos),
+   DM Sans (texto), JetBrains Mono (rotulos e numeros).
+   ============================================================ */
+
+:root {
+  /* Cores */
+  --paper:      #FBFAF6;
+  --paper-2:    #F3F0E8;
+  --ink:        #1A1916;
+  --ink-soft:   #57534A;
+  --line:       #E5E1D6;
+  --accent:     #B5532B;
+  --accent-ink: #963F1E;
+
+  /* Gradientes dos thumbnails por projeto */
+  --g-amber: linear-gradient(145deg, #E8A33D 0%, #B5532B 100%);
+  --g-teal:  linear-gradient(145deg, #3C7A6E 0%, #1E3B35 100%);
+  --g-slate: linear-gradient(145deg, #6E6A60 0%, #2C2A24 100%);
+
+  /* Tipografia */
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body:    "DM Sans", system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, monospace;
+
+  /* Layout */
+  --maxw: 1080px;
+  --gutter: clamp(1.25rem, 5vw, 4rem);
+}
+
+/* Reset enxuto */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.6;
+  font-size: clamp(1rem, 0.95rem + 0.3vw, 1.125rem);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+ul { list-style: none; padding: 0; }
+
+/* Foco visivel e acessivel */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.6rem 1rem;
+  z-index: 100;
+}
+.skip-link:focus { left: 0.5rem; top: 0.5rem; }
+
+/* ---------- Barra superior ---------- */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem var(--gutter);
+  background: color-mix(in srgb, var(--paper) 82%, transparent);
+  backdrop-filter: saturate(140%) blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.topbar__brand {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+}
+.topbar__nav { display: flex; gap: clamp(1rem, 3vw, 2rem); }
+.topbar__nav a {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  position: relative;
+  padding: 0.2rem 0;
+  transition: color 0.2s ease;
+}
+.topbar__nav a::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+.topbar__nav a:hover { color: var(--ink); }
+.topbar__nav a:hover::after { transform: scaleX(1); }
+
+/* ---------- Hero ---------- */
+.hero {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: clamp(4rem, 12vw, 8.5rem) var(--gutter) clamp(3rem, 8vw, 5rem);
+}
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.4rem;
+}
+.hero__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.6rem, 7vw, 2.8rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  max-width: 22ch;
+}
+.hero__title em {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--accent);
+}
+.hero__bio {
+  margin-top: 1.8rem;
+  max-width: 52ch;
+  color: var(--ink-soft);
+  font-size: clamp(1.05rem, 1rem + 0.4vw, 1.25rem);
+}
+.hero__links {
+  margin-top: 2.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* Botoes */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  padding: 0.7rem 1.25rem;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+.btn:hover { transform: translateY(-2px); background: var(--paper-2); }
+.btn--solid {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+.btn--solid:hover { background: var(--accent-ink); border-color: var(--accent-ink); color: #fff; }
+
+/* ---------- Cabecalho de secao ---------- */
+.section-head { margin-bottom: 2.5rem; }
+.section-head__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+}
+.section-head__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  letter-spacing: -0.015em;
+  margin-top: 0.4rem;
+}
+
+/* ---------- Projetos ---------- */
+.projetos {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: clamp(2rem, 6vw, 4rem) var(--gutter) clamp(4rem, 9vw, 7rem);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: clamp(1.25rem, 3vw, 2rem);
+}
+
+.card { position: relative; }
+.card__link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.card__link:hover {
+  transform: translateY(-6px);
+  border-color: color-mix(in srgb, var(--accent) 35%, var(--line));
+  box-shadow: 0 18px 40px -22px rgba(26, 25, 22, 0.45);
+}
+.card__link--static { cursor: default; }
+.card--soon .card__link { background: var(--paper-2); border-style: dashed; }
+
+/* Thumbnail (gradiente + monograma). Para usar uma imagem real,
+   veja o README: basta definir background-image no .card__thumb. */
+.card__thumb {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  display: grid;
+  place-items: center;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+.card[data-accent="amber"] .card__thumb { background-image: var(--g-amber); }
+.card[data-accent="teal"]  .card__thumb { background-image: var(--g-teal); }
+.card[data-accent="slate"] .card__thumb { background-image: var(--g-slate); }
+.card__monogram {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(3rem, 8vw, 4.5rem);
+  color: rgba(255, 255, 255, 0.92);
+  letter-spacing: -0.02em;
+  transition: transform 0.4s ease;
+}
+.card__link:hover .card__monogram { transform: scale(1.06); }
+
+.card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 1.5rem 1.5rem 1.6rem;
+  flex: 1;
+}
+.card__top { display: flex; align-items: baseline; gap: 0.7rem; }
+.card__index {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent);
+}
+.card__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.4rem;
+  letter-spacing: -0.01em;
+}
+
+/* Selo de status sobre o thumbnail (ex: projeto em desenvolvimento) */
+.card__badge {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.7rem;
+  z-index: 1;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  font-weight: 700;
+  color: #E8A33D;
+  background: color-mix(in srgb, var(--ink) 70%, transparent);
+  backdrop-filter: saturate(140%) blur(4px);
+  border: 1px solid color-mix(in srgb, #E8A33D 45%, transparent);
+  border-radius: 999px;
+  padding: 0.25rem 0.6rem;
+}
+.card__desc { color: var(--ink-soft); font-size: 0.97rem; }
+
+/* Credenciais de demo (ex: card da Matriz de Riscos, atras de login) */
+.card__demo {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.4rem 0.6rem;
+}
+.card__demo strong { color: var(--ink); font-weight: 500; }
+
+.tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+.tags li {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+  padding: 0.25rem 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink-soft);
+}
+
+.card__cta {
+  margin-top: auto;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.card__cta .arrow { transition: transform 0.25s ease; color: var(--accent); }
+.card__link:hover .card__cta .arrow { transform: translateX(5px); }
+
+/* ---------- Rodape / contato ---------- */
+.footer {
+  background: var(--ink);
+  color: var(--paper);
+  padding: clamp(3.5rem, 8vw, 6rem) var(--gutter) 2rem;
+}
+.footer__inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2.5rem;
+}
+.footer .section-head__eyebrow { color: #E8A33D; }
+.footer__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.2rem, 6vw, 3.6rem);
+  letter-spacing: -0.02em;
+  margin: 0.5rem 0 1.3rem;
+}
+.footer__mail {
+  font-family: var(--font-mono);
+  font-size: clamp(0.95rem, 2.5vw, 1.2rem);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+.footer__mail:hover { border-color: #E8A33D; }
+.footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+}
+.footer__links a {
+  color: color-mix(in srgb, var(--paper) 78%, transparent);
+  transition: color 0.2s ease;
+}
+.footer__links a:hover { color: #fff; }
+.footer__meta {
+  max-width: var(--maxw);
+  margin: clamp(3rem, 7vw, 5rem) auto 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* ---------- Animacao de entrada ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+  animation-delay: var(--d, 0ms);
+}
+@keyframes rise {
+  to { opacity: 1; transform: none; }
+}
+
+/* Respeita quem prefere menos movimento */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { animation: none; opacity: 1; transform: none; }
+  * { transition-duration: 0.01ms !important; }
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 560px) {
+  .topbar { padding: 0.9rem var(--gutter); }
+  .topbar__nav { gap: 1.1rem; }
+  .footer__meta { flex-direction: column; gap: 0.4rem; }
+}

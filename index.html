@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paulo Roberto Sousa Pereira - Engenheiro de Software Sênior</title>
+  <meta name="description" content="Portfólio de Paulo Roberto Sousa Pereira, Engenheiro de Software Sênior. Aplicações web práticas e funcionais." />
+
+  <!-- Open Graph para compartilhamento em redes / recrutadores -->
+  <meta property="og:title" content="Paulo Roberto Sousa Pereira - Engenheiro de Software Sênior" />
+  <meta property="og:description" content="Aplicações web práticas e funcionais." />
+
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=DM+Sans:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#projetos">Pular para projetos</a>
+
+  <header class="topbar">
+    <a class="topbar__brand" href="#topo">Paulo Roberto Sousa Pereira</a>
+    <nav class="topbar__nav" aria-label="Navegação principal">
+      <a href="#projetos">Projetos</a>
+      <a href="https://mycv.prsites.com.br/" target="_blank" rel="noopener">Currículo</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+
+  <main id="topo">
+    <!-- HERO -->
+    <section class="hero">
+      <p class="eyebrow reveal" style="--d:0ms">Engenheiro de Software Sênior</p>
+      <h1 class="hero__title reveal" style="--d:80ms">
+        Página destinada a exposição do portfólio de aplicações criadas com <em>IA</em><br />
+      </h1>
+      <p class="hero__bio reveal" style="--d:160ms">
+       Todos projetos rodando em produção com dominio no registro.br, VPS (nginx como proxy reverso, docker e firewall com ufw) e cloudflare
+      </p>
+      <div class="hero__links reveal" style="--d:240ms">
+        <a class="btn btn--solid" href="#projetos">Ver projetos</a>
+        <a class="btn" href="https://github.com/holocaster" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/paulo-roberto-sousa-pereira-333bb52a/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </section>
+
+    <!-- PROJETOS -->
+    <section id="projetos" class="projetos">
+      <div class="section-head">
+        <span class="section-head__eyebrow">/ Projetos</span>
+        <h2 class="section-head__title">Seleção de trabalhos</h2>
+      </div>
+
+      <ul class="grid" role="list">
+        <!-- ============================================================
+             MODELO DE CARD - para adicionar um novo projeto, copie um
+             bloco <li class="card"> ... </li> inteiro e ajuste:
+               - data-accent: "amber" | "teal" | "slate" (cor do thumb)
+               - o numero (card__index)
+               - imagem em .card__thumb (ver README para screenshots)
+               - titulo, descricao, tags e o link href
+             ============================================================ -->
+
+        <!-- Projeto 01 -->
+        <li class="card reveal" style="--d:0ms" data-accent="amber">
+          <a class="card__link" href="https://choppcorreto.com.br/" target="_blank" rel="noopener" aria-label="Abrir Chopp Correto em nova aba">
+            <div class="card__thumb" style="background-image:url('assets/img/chopp.jpg');background-position:top center" role="img" aria-label="Prévia do Chopp Correto"></div>
+            <div class="card__body">
+              <div class="card__top">
+                <span class="card__index">01</span>
+                <h3 class="card__title">Chopp Correto</h3>
+              </div>
+              <p class="card__desc">
+                Calculadora de conta de bar: divide bebidas, couvert, petiscos
+                e os 10% do garçom sem dor de cabeça na hora de fechar a conta.
+              </p>
+              <ul class="tags" role="list">
+                <li>React</li>
+                <li>Web App</li>
+              </ul>
+              <span class="card__cta">Ver projeto <span class="arrow" aria-hidden="true">-&gt;</span></span>
+            </div>
+          </a>
+        </li>
+
+        <!-- Projeto 02 -->
+        <li class="card reveal" style="--d:120ms" data-accent="teal">
+          <a class="card__link" href="https://mycv.prsites.com.br/" target="_blank" rel="noopener" aria-label="Abrir meu currículo com IA em nova aba">
+            <div class="card__thumb" style="background-image:url('assets/img/cv.jpg');background-position:top center" role="img" aria-label="Prévia do currículo com assistente de IA"></div>
+            <div class="card__body">
+              <div class="card__top">
+                <span class="card__index">02</span>
+                <h3 class="card__title">Currículo com IA</h3>
+              </div>
+              <p class="card__desc">
+                Minha trajetória profissional como um assistente de IA: pergunte
+                em português ou inglês sobre experiência, stack e projetos, e
+                receba respostas baseadas no meu perfil.
+              </p>
+              <ul class="tags" role="list">
+                <li>Next.js</li>
+                <li>AI SDK</li>
+                <li>TypeScript</li>
+              </ul>
+              <span class="card__cta">Ver projeto <span class="arrow" aria-hidden="true">-&gt;</span></span>
+            </div>
+          </a>
+        </li>
+
+        <!-- Projeto 03 -->
+        <li class="card reveal" style="--d:240ms" data-accent="slate">
+          <a class="card__link" href="https://matriz_risco.prsites.com.br/" target="_blank" rel="noopener" aria-label="Abrir Matriz de Riscos em nova aba">
+            <div class="card__thumb" style="background-image:url('assets/img/riscos.jpg');background-position:top center" role="img" aria-label="Prévia do dashboard da Matriz de Riscos">
+              <span class="card__badge">Em desenvolvimento</span>
+            </div>
+            <div class="card__body">
+              <div class="card__top">
+                <span class="card__index">03</span>
+                <h3 class="card__title">Matriz de Riscos</h3>
+              </div>
+              <p class="card__desc">
+                Gestão de riscos operacionais: cadastro de pessoas, processos,
+                eventos de risco e planos de ação, com dashboard e matriz
+                probabilidade x impacto.
+              </p>
+              <ul class="tags" role="list">
+                <li>React</li>
+                <li>Vite</li>
+                <li>Quarkus</li>
+              </ul>
+              <p class="card__demo">Demo: <strong>demo</strong> / <strong>123456</strong></p>
+              <span class="card__cta">Ver projeto <span class="arrow" aria-hidden="true">-&gt;</span></span>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- CONTATO / RODAPE -->
+  <footer id="contato" class="footer">
+    <div class="footer__inner">
+      <div class="footer__cta">
+        <span class="section-head__eyebrow">/ Contato</span>
+        <h2 class="footer__title">Vamos conversar.</h2>
+        <a class="footer__mail" href="https://www.linkedin.com/in/paulo-roberto-sousa-pereira-333bb52a/" target="_blank" rel="noopener">Fale comigo no LinkedIn</a>
+      </div>
+      <nav class="footer__links" aria-label="Links externos">
+        <a href="https://github.com/holocaster" target="_blank" rel="noopener">GitHub <span aria-hidden="true">-&gt;</span></a>
+        <a href="https://www.linkedin.com/in/paulo-roberto-sousa-pereira-333bb52a/" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">-&gt;</span></a>
+        <a href="https://mycv.prsites.com.br/" target="_blank" rel="noopener">Currículo <span aria-hidden="true">-&gt;</span></a>
+      </nav>
+    </div>
+    <p class="footer__meta">
+      <span>Paulo Roberto Sousa Pereira</span>
+      <span>&copy; <span id="ano"></span></span>
+    </p>
+  </footer>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
