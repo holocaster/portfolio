@@ -43,45 +43,19 @@ Os cards usam um gradiente com monograma por padrao. Para usar uma imagem:
 
 A imagem cobre o thumb automaticamente; pode remover o `<span class="card__monogram">`.
 
-## Publicar no VPS (nginx)
+## Cache: atualizar CSS/JS (obrigatorio)
 
-1. Copie a pasta para o servidor:
+O nginx serve os assets com cache agressivo (`Cache-Control: immutable`,
+`expires 1y`) e os nomes dos arquivos nao tem hash. O navegador so rebaixa
+um arquivo se a URL mudar. Por isso, sempre que editar
+`assets/css/styles.css` ou `assets/js/main.js`, incremente o `?v=N` da
+respectiva tag no `index.html`:
 
-```bash
-rsync -av --delete ./ usuario@SEU_VPS:/var/www/portfolio/
+```html
+<link rel="stylesheet" href="assets/css/styles.css?v=1" />  <!-- ?v=2, ?v=3 ... -->
+<script src="assets/js/main.js?v=1" defer></script>
 ```
 
-2. Bloco de server no nginx (ex: `/etc/nginx/sites-available/portfolio`):
+Incremente cada arquivo de forma independente (so o que foi alterado). Se
+esquecer, os visitantes ficam com a versao antiga por ate um ano.
 
-```nginx
-server {
-    listen 80;
-    server_name SEU_DOMINIO;   # ex: portfolio.prsites.com.br
-
-    root /var/www/portfolio;
-    index index.html;
-
-    location / {
-        try_files $uri $uri/ =404;
-    }
-
-    # cache de assets estaticos
-    location ~* \.(css|js|png|jpg|jpeg|svg|woff2)$ {
-        expires 30d;
-        add_header Cache-Control "public";
-    }
-}
-```
-
-3. Ative e recarregue:
-
-```bash
-sudo ln -s /etc/nginx/sites-available/portfolio /etc/nginx/sites-enabled/
-sudo nginx -t && sudo systemctl reload nginx
-```
-
-4. HTTPS gratis com certbot:
-
-```bash
-sudo certbot --nginx -d SEU_DOMINIO
-```
